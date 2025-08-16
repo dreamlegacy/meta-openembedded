@@ -53,5 +53,7 @@ do_configure_prepend () {
 }
 
 do_install_append() {
-        oe_runmake 'DESTDIR=${D}' install install-dev
+        oe_runmake 'DESTDIR=${D}' install-dev
+        rm ${D}${libdir}/*.la
+        rmdir --ignore-fail-on-non-empty ${D}${libdir}
 }
